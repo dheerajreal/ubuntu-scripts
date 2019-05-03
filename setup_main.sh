@@ -7,13 +7,13 @@ sudo echo "" ; if [[ $? != 0 ]]; then echo "Please run this script as admin" ; e
 
 #defining various functions
 displayHeader() {
-	sleep 1
+	sleep 0.5
         echo "############################################################################"
         echo "############################################################################"
 	    echo "----------------------------Welcome to myscript!---------------------------"
         echo "############################################################################"
         echo "############################################################################"
-	sleep 1;
+	sleep 0.5;
 	echo ""
 }
 
@@ -24,7 +24,7 @@ executeCommands() {
 	    echo "";
 	    echo "Executing: $i";
 	    echo "";
-	    sleep 1;
+	    sleep 0.5;
 	    eval $i;
 	done
 	echo "";
@@ -43,11 +43,30 @@ askUserYesOrNo (){
 	done	
 }
 
+
+executeAptInstall() {
+	commands=("$@")
+	for i in "${commands[@]}"
+	do
+	    echo "";
+	    echo "Installing: $i";
+	    echo "";
+	    sleep 0.5;
+	    sudo apt install $i -y;
+	done
+	echo "";
+	echo "EXECUTED!";
+	read -n 1 -s -r -p "Press any key to continue...";
+	echo "";
+}
+
+
+
 updateAndUpgrade() {
     declare -a commands=(
 		"sudo apt update"
 		"sudo apt upgrade -y"
-        "sudo apt autoremove")
+        "sudo apt autoremove -y")
 	executeCommands "${commands[@]}";
 }
 
@@ -60,27 +79,24 @@ dpkgerrorcheck() {
 
 installPackage() {
     declare -a commands=(
-    "sudo apt install ffmpeg"
-    "sudo apt install gimp"
-	"sudo apt install baobab"
-	"sudo apt install neofetch"
-	"sudo apt install git"
-    "sudo apt install chromium-browser"
-    "sudo apt install vlc"
-    "sudo apt install mplayer"
-    "sudo apt install synaptic"
-    "sudo apt install preload"
-    "sudo apt install gdebi"
-    "sudo apt install tlp && sudo tlp start"  
-    "sudo apt install qbittorrent"
-    "sudo apt install gitg"
-    "sudo apt install gcc"
-    "sudo apt install mypaint"
-    "sudo apt install gpicview"
-    "sudo apt install gufw"
-    "sudo apt install nautilus-admin"
+    ffmpeg
+    gimp
+	baobab
+	neofetch
+    chromium-browser
+    vlc
+    smplayer
+    synaptic
+    preload
+    gdebi
+    tlp 
+    qbittorrent
+    mypaint
+    gpicview
+    gufw
+    nautilus-admin
     )
-	executeCommands "${commands[@]}";
+	executeAptInstall "${commands[@]}"; sudo tlp start  
 }
 
 uninstallPackage() {
@@ -101,14 +117,26 @@ uninstallPackage() {
 
 installGnomeExtensions() {
     declare -a commands=(
-    "sudo apt install gnome-tweaks"
-    "sudo apt install gnome-shell-extensions"
-    "sudo apt install gnome-shell-extension-dash-to-panel" 
-    "sudo apt install gnome-shell-extension-no-annoyance"
-    "sudo apt install gnome-shell-extension-dashtodock"
-    "sudo apt install gnome-shell-extension-remove-dropdown-arrows"
+    gnome-tweaks
+    gnome-shell-extensions
+    gnome-shell-extension-dash-to-panel 
+    gnome-shell-extension-no-annoyance
+    gnome-shell-extension-dashtodock
+    gnome-shell-extension-remove-dropdown-arrows
     )
-	executeCommands "${commands[@]}";
+	executeAptInstall "${commands[@]}";
+}
+
+installProgrammerTools(){
+    declare -a commands=(
+    git
+    gitg
+    gcc 
+    ruby
+    ruby-full
+    python3-pip
+    )
+	executeAptInstall "${commands[@]}";
 }
 ########################################################################
 #execution begins here
@@ -129,6 +157,12 @@ if [[ $? == 1 ]]; then installPackage; fi ;
 
 askUserYesOrNo "Install Gnome shell extensions ?";
 if [[ $? == 1 ]]; then installGnomeExtensions; fi ;
+
+askUserYesOrNo "Install programming tools ?";
+if [[ $? == 1 ]]; then installProgrammerTools; fi ;
+
+
+echo "done"
 
 
 
