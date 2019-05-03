@@ -135,6 +135,7 @@ installProgrammerTools(){
     ruby
     ruby-full
     python3-pip
+    node
     )
 	executeAptInstall "${commands[@]}";
 }
