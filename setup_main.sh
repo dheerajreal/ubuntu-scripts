@@ -133,6 +133,7 @@ installProgrammerTools(){
     gitg
     gcc 
 	build-essential 
+	nodejs
     ruby
     ruby-full
     python3-pip
