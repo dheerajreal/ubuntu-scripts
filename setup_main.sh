@@ -132,6 +132,7 @@ installProgrammerTools(){
     git
     gitg
     gcc 
+	build-essential 
     ruby
     ruby-full
     python3-pip
