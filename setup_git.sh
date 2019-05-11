@@ -1,3 +1,6 @@
+#!/bin/bash
+
+#Prompts the user for global config about name and email.
 echo "Type in your name (no special characters): "
 read name
 
