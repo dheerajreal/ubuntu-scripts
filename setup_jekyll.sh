@@ -18,9 +18,8 @@ source ~/.bashrc
 
 #Finally, install Jekyll
 
-
-gem install jekyll bundler
-
+#gem install jekyll bundler
+echo "gem install jekyll bundler" | bash
 #That’s it! You’re ready to start using Jekyll.
 
 echo "done"
