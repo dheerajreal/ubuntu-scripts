@@ -119,6 +119,7 @@ installGnomeExtensions() {
     declare -a commands=(
     gnome-tweaks
     gnome-shell-extensions
+    chrome-gnome-shell 
     gnome-shell-extension-dash-to-panel 
     gnome-shell-extension-no-annoyance
     gnome-shell-extension-dashtodock
