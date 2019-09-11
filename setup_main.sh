@@ -129,15 +129,20 @@ installGnomeExtensions() {
 
 installProgrammerTools(){
     declare -a commands=(
+    tree
+    tilix
     git
     gitg
     gcc 
-	build-essential 
+	build-essential
+	geany 
 	nodejs
     ruby
     ruby-full
     python3-pip
-    node
+    python3-tk
+    virtualenv
+    default-jdk
     )
 	executeAptInstall "${commands[@]}";
 }
