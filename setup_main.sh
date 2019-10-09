@@ -130,6 +130,7 @@ installGnomeExtensions() {
 
 installProgrammerTools(){
     declare -a commands=(
+	sqlitebrowser
     tree
     tilix
     git
