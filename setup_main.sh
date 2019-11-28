@@ -1,6 +1,6 @@
 #!/bin/bash
 #check version with -v or --version
-VERSION="1.0"
+VERSION="1.1"
 if [[ ($1 == -v) || ($1 == --version) ]]; then
 	echo "Version $VERSION"
 	exit
