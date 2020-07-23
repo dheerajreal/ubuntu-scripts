@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#Prompts the user for global config about name and email.
+# Prompts the user for global config about name and email.
 echo "Type in your name (no special characters): "
 read name
 
@@ -9,6 +9,5 @@ read email
 
 git config --global user.email $email
 git config --global user.name $name
-
 
 echo "done"
