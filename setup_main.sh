@@ -91,7 +91,6 @@ installPackage() {
 		ffmpeg
 		gimp
 		baobab
-		neofetch
 		chromium-browser
 		vlc
 		smplayer
@@ -141,19 +140,11 @@ installGnomeExtensions() {
 installProgrammerTools() {
 	declare -a commands=(
 		sqlitebrowser
-		tree
-		tilix
-		git
 		gitg
-		gcc
-		build-essential
 		geany
 		nodejs
 		ruby
 		ruby-full
-		python3-pip
-		python3-tk
-		virtualenv
 		default-jdk
 	)
 	executeAptInstall "${commands[@]}"

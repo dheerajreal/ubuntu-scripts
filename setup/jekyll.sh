@@ -5,7 +5,7 @@
 
 #Before we install Jekyll, we need to make sure we have all the required dependencies.
 
-sudo apt install ruby-full build-essential zlib1g-dev
+sudo apt install ruby-full build-essential zlib1g-dev -y
 
 #It is best to avoid installing Ruby Gems as the root user.
 #Therefore, we need to set up a gem installation directory for your user account.
