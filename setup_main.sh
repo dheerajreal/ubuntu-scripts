@@ -1,6 +1,6 @@
 #!/bin/bash
 #check version with -v or --version
-VERSION="1.1"
+VERSION="1.2"
 if [[ ($1 == -v) || ($1 == --version) ]]; then
 	echo "Version $VERSION"
 	exit
@@ -17,9 +17,7 @@ fi
 displayHeader() {
 	sleep 0.5
 	echo "############################################################################"
-	echo "############################################################################"
 	echo "----------------------------Welcome to myscript!---------------------------"
-	echo "############################################################################"
 	echo "############################################################################"
 	sleep 0.5
 	echo ""
@@ -71,14 +69,6 @@ executeAptInstall() {
 	echo ""
 }
 
-updateAndUpgrade() {
-	declare -a commands=(
-		"sudo apt update"
-		"sudo apt upgrade -y"
-		"sudo apt autoremove -y")
-	executeCommands "${commands[@]}"
-}
-
 installPackage() {
 	declare -a commands=(
 		ffmpeg
@@ -117,19 +107,6 @@ uninstallPackage() {
 	executeCommands "${commands[@]}"
 }
 
-installGnomeExtensions() {
-	declare -a commands=(
-		gnome-tweaks
-		gnome-shell-extensions
-		chrome-gnome-shell
-		gnome-shell-extension-dash-to-panel
-		gnome-shell-extension-no-annoyance
-		gnome-shell-extension-dashtodock
-		gnome-shell-extension-remove-dropdown-arrows
-	)
-	executeAptInstall "${commands[@]}"
-}
-
 installProgrammerTools() {
 	declare -a commands=(
 		sqlitebrowser
@@ -150,14 +127,8 @@ displayHeader
 askUserYesOrNo "Remove unnecessary preinstalled apps ?"
 if [[ $? == 1 ]]; then uninstallPackage; fi
 
-askUserYesOrNo "Perform an update of all packages ?"
-if [[ $? == 1 ]]; then updateAndUpgrade; fi
-
 askUserYesOrNo "Install new apps ?"
 if [[ $? == 1 ]]; then installPackage; fi
-
-askUserYesOrNo "Install Gnome shell extensions ?"
-if [[ $? == 1 ]]; then installGnomeExtensions; fi
 
 askUserYesOrNo "Install programming tools ?"
 if [[ $? == 1 ]]; then installProgrammerTools; fi
