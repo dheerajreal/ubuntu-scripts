@@ -79,13 +79,6 @@ updateAndUpgrade() {
 	executeCommands "${commands[@]}"
 }
 
-dpkgerrorcheck() {
-	declare -a commands=(
-		"sudo apt --fix-broken install"
-		"sudo dpkg --configure -a")
-	executeCommands "${commands[@]}"
-}
-
 installPackage() {
 	declare -a commands=(
 		ffmpeg
@@ -153,9 +146,6 @@ installProgrammerTools() {
 #execution begins here
 ########################################################################
 displayHeader
-
-askUserYesOrNo "Check for package management errors ?"
-if [[ $? == 1 ]]; then dpkgerrorcheck; fi
 
 askUserYesOrNo "Remove unnecessary preinstalled apps ?"
 if [[ $? == 1 ]]; then uninstallPackage; fi
