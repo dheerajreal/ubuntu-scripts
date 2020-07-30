@@ -69,28 +69,6 @@ executeAptInstall() {
 	echo ""
 }
 
-installPackage() {
-	declare -a commands=(
-		ffmpeg
-		gimp
-		baobab
-		chromium-browser
-		vlc
-		smplayer
-		synaptic
-		preload
-		gdebi
-		tlp
-		qbittorrent
-		mypaint
-		gpicview
-		gufw
-		nautilus-admin
-	)
-	executeAptInstall "${commands[@]}"
-	sudo tlp start
-}
-
 uninstallPackage() {
 	#uninstall according to this file
 	#https://people.canonical.com/~ubuntu-archive/seeds/ubuntu.bionic/desktop.minimal-remove
@@ -107,18 +85,6 @@ uninstallPackage() {
 	executeCommands "${commands[@]}"
 }
 
-installProgrammerTools() {
-	declare -a commands=(
-		sqlitebrowser
-		gitg
-		geany
-		nodejs
-		ruby
-		ruby-full
-		default-jdk
-	)
-	executeAptInstall "${commands[@]}"
-}
 ########################################################################
 #execution begins here
 ########################################################################
@@ -126,11 +92,5 @@ displayHeader
 
 askUserYesOrNo "Remove unnecessary preinstalled apps ?"
 if [[ $? == 1 ]]; then uninstallPackage; fi
-
-askUserYesOrNo "Install new apps ?"
-if [[ $? == 1 ]]; then installPackage; fi
-
-askUserYesOrNo "Install programming tools ?"
-if [[ $? == 1 ]]; then installProgrammerTools; fi
 
 echo "done"
