@@ -1,3 +1,3 @@
 #!/bin/bash
 
-sudo apt install tree neofetch git tilix gcc build-essential -y
+sudo apt install curl tree neofetch git vim tilix gcc build-essential -y
