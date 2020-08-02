@@ -2,8 +2,9 @@
 cd ~
 python3 -m venv .defaultpyenv
 
+echo "  " >>~/.bashrc
 echo "# default python virtualenvironment " >>~/.bashrc
 echo "alias defaultpyenv='source ~/.defaultpyenv/bin/activate' " >>~/.bashrc
-
-echo "activate by typing:  source .defaultpyenv/bin/activate"
-echo "or reload shell and type defaultpyenv"
+echo "  " >>~/.bashrc
+echo "activate by typing:  defaultpyenv "
+source ~/.bashrc
