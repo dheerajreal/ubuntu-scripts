@@ -6,6 +6,5 @@ sudo apt install \
     gimp \
     nomacs \
     gpicview \
-    chromium-browser \
     smplayer \
     qbittorrent -y
